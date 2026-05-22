@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Anjali 🎂</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Quicksand:wght@300;400;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
+
+<style>
+
+:root {
+  --pink: #f48fb1;
+  --deep-pink: #e91e8c;
+  --lavender: #c9b8f5;
+  --purple: #9c6fde;
+  --cream: #fff8f0;
+  --gold: #ffd700;
+  --rose: #ff6b9d;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Quicksand',sans-serif;
+  overflow:hidden;
+  background:#1a0a2e;
+  height:100vh;
+  width:100vw;
+}
+
+/* ===== PAGES ===== */
+
+.page{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+}
+
+.page.active{
+  display:flex;
+}
+
+/* ===== BACKGROUND ===== */
+
+.stars-bg{
+  position:fixed;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  z-index:0;
+}
+
+.star{
+  position:absolute;
+  background:white;
+  border-radius:50%;
+  animation:twinkle linear infinite;
+}
+
+@keyframes twinkle{
+  0%,100%{
+    opacity:0.2;
+    transform:scale(1);
+  }
+  50%{
+    opacity:1;
+    transform:scale(1.5);
+  }
+}
+
+.particles{
+  position:fixed;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  z-index:0;
+  pointer-events:none;
+}
+
+.particle{
+  position:absolute;
+  border-radius:50%;
+  animation:floatUp linear infinite;
+}
+
+@keyframes floatUp{
+  0%{
+    transform:translateY(110vh);
+    opacity:0;
+  }
+  10%{
+    opacity:0.7;
+  }
+  100%{
+    transform:translateY(-10vh);
+    opacity:0;
+  }
+}
+
+/* ===== PAGE 1 ===== */
+
+#page1{
+  background:linear-gradient(135deg,#1a0a2e 0%,#2d1b4e 40%,#1a0a2e 100%);
+}
+
+.passcode-card{
+  width:420px;
+  max-width:95vw;
+  padding:45px;
+  border-radius:30px;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.12);
+  backdrop-filter:blur(20px);
+  text-align:center;
+}
+
+.photo-frame{
+  width:130px;
+  height:130px;
+  margin:auto;
+  background:rgba(255,255,255,0.1);
+  border-radius:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:60px;
+  position:relative;
+}
+
+.bow{
+  position:absolute;
+  top:-15px;
+  font-size:30px;
+}
+
+.bear-icon{
+  position:absolute;
+  bottom:-20px;
+  left:10px;
+  font-size:32px;
+}
+
+.passcode-card h2{
+  color:white;
+  margin-top:20px;
+  margin-bottom:10px;
+  font-family:'Dancing Script',cursive;
+  font-size:2rem;
+}
+
+.passcode-card p{
+  color:rgba(255,255,255,0.6);
+}
+
+.code-boxes{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  margin:30px 0;
+}
+
+.code-box{
+  width:60px;
+  height:65px;
+  border-radius:14px;
+  background:rgba(255,255,255,0.1);
+  border:2px solid rgba(255,255,255,0.2);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  font-size:30px;
+}
+
+.code-box.filled{
+  border-color:var(--lavender);
+  background:rgba(201,184,245,0.25);
+}
+
+.numpad{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+
+.num-btn{
+  width:65px;
+  height:65px;
+  border-radius:50%;
+  border:none;
+  background:rgba(255,255,255,0.08);
+  color:white;
+  font-size:22px;
+  cursor:pointer;
+  margin:auto;
+}
+
+.num-btn:hover{
+  background:rgba(255,255,255,0.18);
+}
+
+/* ===== PAGE 2 ===== */
+
+#page2{
+  background:linear-gradient(160deg,#fff0f5 0%,#f8e8ff 50%,#fff0fa 100%);
+}
+
+.bday-title{
+  font-size:3rem;
+  color:var(--deep-pink);
+  font-family:'Dancing Script',cursive;
+  margin-bottom:25px;
+}
+
+.cake-svg{
+  width:260px;
+}
+
+.blow-btn{
+  margin-top:30px;
+  padding:15px 40px;
+  border:none;
+  border-radius:50px;
+  background:linear-gradient(135deg,var(--deep-pink),var(--purple));
+  color:white;
+  font-size:1.1rem;
+  cursor:pointer;
+}
+
+.birthday-message{
+  display:none;
+  margin-top:25px;
+  text-align:center;
+}
+
+.birthday-message.show{
+  display:block;
+}
+
+.hb-text{
+  font-family:'Pacifico',cursive;
+  font-size:2.5rem;
+  color:var(--deep-pink);
+}
+
+.next-btn{
+  position:fixed;
+  bottom:40px;
+  right:40px;
+  padding:14px 30px;
+  border:none;
+  border-radius:50px;
+  background:linear-gradient(135deg,var(--purple),var(--deep-pink));
+  color:white;
+  cursor:pointer;
+  display:none;
+}
+
+.next-btn.show{
+  display:block;
+}
+
+/* ===== PAGE 3 ===== */
+
+#page3{
+  background:linear-gradient(160deg,#1a0a2e 0%,#2d1b4e 40%,#0d1a3e 100%);
+}
+
+.gifts-title{
+  font-size:2.8rem;
+  color:white;
+  font-family:'Dancing Script',cursive;
+  margin-bottom:10px;
+}
+
+.gifts-sub{
+  color:rgba(255,255,255,0.6);
+  margin-bottom:40px;
+}
+
+.gifts-grid{
+  display:grid;
+  grid-template-columns:repeat(2,180px);
+  gap:30px;
+}
+
+.gift-box{
+  background:rgba(255,255,255,0.08);
+  border-radius:25px;
+  padding:30px;
+  text-align:center;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.gift-box:hover{
+  transform:translateY(-8px);
+}
+
+.gift-icon{
+  font-size:50px;
+}
+
+.gift-label{
+  margin-top:10px;
+  color:white;
+}
+
+/* ===== MODAL ===== */
+
+.modal-overlay{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.85);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:100;
+}
+
+.modal-overlay.open{
+  display:flex;
+}
+
+.modal-content{
+  background:#1a0a2e;
+  border-radius:25px;
+  max-width:90vw;
+  max-height:90vh;
+  overflow:auto;
+  padding:20px;
+  position:relative;
+}
+
+.modal-close{
+  position:absolute;
+  top:10px;
+  right:10px;
+  width:35px;
+  height:35px;
+  border:none;
+  border-radius:50%;
+  background:rgba(255,255,255,0.1);
+  color:white;
+  cursor:pointer;
+}
+
+.stickers-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+}
+
+.sticker-item img,
+.photos-container img,
+.letter-container img{
+  width:100%;
+  border-radius:15px;
+}
+
+.video-container video{
+  width:100%;
+  border-radius:15px;
+}
+
+.img-error{
+  color:white;
+  text-align:center;
+  padding:30px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="stars-bg" id="starsBg"></div>
+<div class="particles" id="particles"></div>
+
+<!-- PAGE 1 -->
+
+<div class="page active" id="page1">
+
+<div class="passcode-card">
+
+<div style="position:relative; display:inline-block;">
+<div class="photo-frame">
+🎁
+<span class="bow">🎀</span>
+</div>
+<span class="bear-icon">🐻</span>
+</div>
+
+<h2>Enter a passcode</h2>
+
+<p>
+hint — your birthday date (ddmy)
+</p>
+
+<div class="code-boxes">
+<div class="code-box" id="box0"></div>
+<div class="code-box" id="box1"></div>
+<div class="code-box" id="box2"></div>
+<div class="code-box" id="box3"></div>
+</div>
+
+<div class="numpad">
+
+<button class="num-btn" onclick="pressNum('1')">1</button>
+<button class="num-btn" onclick="pressNum('2')">2</button>
+<button class="num-btn" onclick="pressNum('3')">3</button>
+
+<button class="num-btn" onclick="pressNum('4')">4</button>
+<button class="num-btn" onclick="pressNum('5')">5</button>
+<button class="num-btn" onclick="pressNum('6')">6</button>
+
+<button class="num-btn" onclick="pressNum('7')">7</button>
+<button class="num-btn" onclick="pressNum('8')">8</button>
+<button class="num-btn" onclick="pressNum('9')">9</button>
+
+<button class="num-btn">*</button>
+<button class="num-btn" onclick="pressNum('0')">0</button>
+<button class="num-btn" onclick="deleteNum()">⌫</button>
+
+</div>
+
+</div>
+</div>
+
+<!-- PAGE 2 -->
+
+<div class="page" id="page2">
+
+<div class="bday-title">
+🎂 Make a Wish!
+</div>
+
+<svg class="cake-svg" viewBox="0 0 260 280">
+<rect x="30" y="180" width="200" height="70" rx="12" fill="#f06292"/>
+<rect x="55" y="120" width="150" height="65" rx="10" fill="#ce93d8"/>
+<rect x="80" y="70" width="100" height="55" rx="10" fill="#f48fb1"/>
+</svg>
+
+<button class="blow-btn" id="blowBtn" onclick="blowCandles()">
+🌬️ Blow the Candles!
+</button>
+
+<div class="birthday-message" id="bdayMsg">
+<div class="hb-text">
+Happy Birthday Anjali! 🎉
+</div>
+</div>
+
+</div>
+
+<button class="next-btn" id="nextBtn" onclick="goToPage3()">
+Open Gifts 🎁 →
+</button>
+
+<!-- PAGE 3 -->
+
+<div class="page" id="page3">
+
+<div class="gifts-title">
+Your Surprise Gifts 🎁
+</div>
+
+<p class="gifts-sub">
+Click on each gift to open it ✨
+</p>
+
+<div class="gifts-grid">
+
+<div class="gift-box" onclick="openGift(1)">
+<div class="gift-icon">🎀</div>
+<div class="gift-label">Your Stickers</div>
+</div>
+
+<div class="gift-box" onclick="openGift(2)">
+<div class="gift-icon">📸</div>
+<div class="gift-label">Our Photos</div>
+</div>
+
+<div class="gift-box" onclick="openGift(3)">
+<div class="gift-icon">💌</div>
+<div class="gift-label">A Letter</div>
+</div>
+
+<div class="gift-box" onclick="openGift(4)">
+<div class="gift-icon">🎬</div>
+<div class="gift-label">Special Video</div>
+</div>
+
+</div>
+</div>
+
+<!-- STICKERS -->
+
+<div class="modal-overlay" id="gift1Modal">
+
+<div class="modal-content">
+
+<button class="modal-close" onclick="closeModal('gift1Modal')">
+✕
+</button>
+
+<h2 style="color:white;text-align:center;margin-bottom:20px;">
+💕 Your Stickers 💕
+</h2>
+
+<div class="stickers-grid" id="stickersGrid"></div>
+
+</div>
+</div>
+
+<!-- PHOTOS -->
+
+<div class="modal-overlay" id="gift2Modal">
+
+<div class="modal-content photos-container">
+
+<button class="modal-close" onclick="closeModal('gift2Modal')">
+✕
+</button>
+
+<h2 style="color:white;text-align:center;margin-bottom:20px;">
+📸 Our Photos
+</h2>
+
+<img
+src="photo/our_photo.png"
+alt="photo"
+onerror="handleImgError(this)"
+>
+
+</div>
+</div>
+
+<!-- LETTER -->
+
+<div class="modal-overlay" id="gift3Modal">
+
+<div class="modal-content letter-container">
+
+<button class="modal-close" onclick="closeModal('gift3Modal')">
+✕
+</button>
+
+<h2 style="color:white;text-align:center;margin-bottom:20px;">
+💌 Letter
+</h2>
+
+<img
+src="letter/letter_page1.png"
+alt="letter"
+onerror="handleImgError(this)"
+>
+
+<br>
+
+<img
+src="letter/letter_page2.png"
+alt="letter"
+onerror="handleImgError(this)"
+>
+
+</div>
+</div>
+
+<!-- VIDEO -->
+
+<div class="modal-overlay" id="gift4Modal">
+
+<div class="modal-content video-container">
+
+<button class="modal-close" onclick="closeModal('gift4Modal')">
+✕
+</button>
+
+<h2 style="color:white;text-align:center;margin-bottom:20px;">
+🎬 Special Video
+</h2>
+
+<video controls autoplay playsinline style="width:100%;border-radius:15px;">
+
+<source src="https://res.cloudinary.com/dtkethccp/video/upload/q_auto/f_auto/v1779480396/video_n7ftvi.mp4" type="video/mp4">
+
+</video>
+
+</div>
+</div>
+
+<script>
+
+/* ===== STARS ===== */
+
+const starsBg = document.getElementById('starsBg');
+
+for(let i=0;i<80;i++){
+
+  const star=document.createElement('div');
+
+  star.className='star';
+
+  const size=Math.random()*3+1;
+
+  star.style.width=size+'px';
+  star.style.height=size+'px';
+
+  star.style.left=Math.random()*100+'%';
+  star.style.top=Math.random()*100+'%';
+
+  star.style.animationDuration=(Math.random()*3+1)+'s';
+
+  starsBg.appendChild(star);
+}
+
+/* ===== PARTICLES ===== */
+
+const particles=document.getElementById('particles');
+
+const colors=[
+'#f48fb1',
+'#c9b8f5',
+'#ffd700',
+'#ff6b9d'
+];
+
+for(let i=0;i<18;i++){
+
+  const p=document.createElement('div');
+
+  p.className='particle';
+
+  const size=Math.random()*12+5;
+
+  p.style.width=size+'px';
+  p.style.height=size+'px';
+
+  p.style.background=colors[Math.floor(Math.random()*colors.length)];
+
+  p.style.left=Math.random()*100+'%';
+
+  p.style.animationDuration=(Math.random()*8+5)+'s';
+
+  particles.appendChild(p);
+}
+
+/* ===== STICKERS ===== */
+
+const stickerFiles=[
+
+'stickers/sticker1.png',
+'stickers/sticker2.png',
+'stickers/sticker3.png',
+'stickers/sticker4.png',
+'stickers/sticker5.png',
+'stickers/sticker6.png',
+'stickers/sticker7.png',
+'stickers/sticker8.png',
+'stickers/sticker9.png',
+'stickers/sticker10.png',
+'stickers/sticker11.png',
+'stickers/sticker12.png',
+'stickers/sticker13.png',
+'stickers/sticker14.png'
+
+];
+
+const stickersGrid=document.getElementById('stickersGrid');
+
+stickerFiles.forEach(file=>{
+
+  const item=document.createElement('div');
+
+  item.className='sticker-item';
+
+  const img=document.createElement('img');
+
+  img.src=file;
+
+  img.onerror=function(){
+    this.parentElement.innerHTML='<div class="img-error">Image Not Found</div>';
+  };
+
+  item.appendChild(img);
+
+  stickersGrid.appendChild(item);
+
+});
+
+/* ===== PASSCODE ===== */
+
+const CORRECT='2356';
+
+let entered='';
+
+function pressNum(n){
+
+  if(entered.length>=4) return;
+
+  entered+=n;
+
+  updateBoxes();
+
+  if(entered.length===4){
+
+    setTimeout(checkCode,300);
+
+  }
+}
+
+function deleteNum(){
+
+  entered=entered.slice(0,-1);
+
+  updateBoxes();
+
+}
+
+function updateBoxes(){
+
+  for(let i=0;i<4;i++){
+
+    const box=document.getElementById('box'+i);
+
+    if(i<entered.length){
+
+      box.innerHTML='●';
+
+      box.classList.add('filled');
+
+    }else{
+
+      box.innerHTML='';
+
+      box.classList.remove('filled');
+
+    }
+  }
+}
+
+function checkCode(){
+
+  if(entered===CORRECT){
+
+    showPage('page2');
+
+  }else{
+
+    alert('Wrong Passcode');
+
+    entered='';
+
+    updateBoxes();
+
+  }
+}
+
+/* ===== PAGE SWITCH ===== */
+
+function showPage(id){
+
+  document.querySelectorAll('.page').forEach(p=>{
+
+    p.classList.remove('active');
+
+  });
+
+  document.getElementById(id).classList.add('active');
+
+}
+
+/* ===== CANDLES ===== */
+
+function blowCandles(){
+
+  document.getElementById('bdayMsg').classList.add('show');
+
+  document.getElementById('nextBtn').classList.add('show');
+
+}
+
+/* ===== NEXT PAGE ===== */
+
+function goToPage3(){
+
+  showPage('page3');
+
+}
+
+/* ===== MODALS ===== */
+
+function openGift(n){
+
+  document.getElementById('gift'+n+'Modal').classList.add('open');
+
+}
+
+function closeModal(id){
+
+  document.getElementById(id).classList.remove('open');
+
+}
+
+/* ===== IMAGE ERROR ===== */
+
+function handleImgError(img){
+
+  img.style.display='none';
+
+  const div=document.createElement('div');
+
+  div.className='img-error';
+
+  div.innerHTML='Image Not Found';
+
+  img.parentElement.appendChild(div);
+
+}
+
+</script>
+
+</body>
+</html>
